@@ -198,10 +198,26 @@
         light.position.set( 0, 100, 0 );
         scene.add( light );
 
+        var texture_placeholder;
+        texture_placeholder = document.createElement( 'canvas' );
+        texture_placeholder.width = 128;
+        texture_placeholder.height = 128;
+        var context = texture_placeholder.getContext( '2d' );
+        context.fillStyle = 'gray';
+        context.fillRect( 0, 0, texture_placeholder.width, texture_placeholder.height );
+
         var backImage = THREE.ImageUtils.loadTexture("media/Back.png");
+        backImage.image = texture_placeholder;
+        backImage.needsUpdate = true;
         var ceilImage = THREE.ImageUtils.loadTexture("media/Ceiling.png");
+        ceilImage.image = texture_placeholder;
+        ceilImage.needsUpdate = true;
         var floorImage = THREE.ImageUtils.loadTexture("media/Floor.png");
+        floorImage.image = texture_placeholder;
+        floorImage.needsUpdate = true;
         var sideImage = THREE.ImageUtils.loadTexture("media/Side.png");
+        sideImage.image = texture_placeholder;
+        sideImage.needsUpdate = true;
 
         var roomMaterialArray = [
           new THREE.MeshBasicMaterial({ map: sideImage, side: THREE.BackSide }),
